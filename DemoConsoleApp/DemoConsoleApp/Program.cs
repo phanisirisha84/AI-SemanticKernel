@@ -128,7 +128,7 @@ AgentGroupChat chat = new(fitnessTrainerAgent, dieticianAgent, fitnessProgramMan
     }
 };
 
-string prompt = "I am a vegetarian who wants to follow weightloss program. I am over weight by 10 Kilograms according to my BMI. Please craft a fitness plan for me for 3 months.";
+string prompt = "I want to enroll for weightloss program. I am over weight by 10 Kilograms according to my BMI. Please craft a fitness plan for me for 3 months.";
 
 chat.AddChatMessage(new Microsoft.SemanticKernel.ChatMessageContent(AuthorRole.User, prompt));
 await foreach (var content in chat.InvokeAsync())
@@ -136,6 +136,7 @@ await foreach (var content in chat.InvokeAsync())
     Console.WriteLine();
     Console.WriteLine($"# {content.Role} - {content.AuthorName ?? "*"}: '{content.Content}'");
     Console.WriteLine();
+    Thread.Sleep(1000);
 }
 
 Console.WriteLine($"# IS COMPLETE: {chat.IsComplete}");
